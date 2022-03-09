@@ -82,7 +82,7 @@ export default {
         commit(types.LIST_FETCH_REQUEST);
 
         return endpoint
-            .get({
+            .post({
                 url: `categories/articles`,
                 params: { name },
             })
@@ -100,7 +100,7 @@ export default {
         commit(types.LIST_FETCH_REQUEST);
 
         return endpoint
-            .get({
+            .post({
                 url: `${types.route}/by_author`,
                 params: { author },
             })
