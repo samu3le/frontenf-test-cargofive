@@ -1,7 +1,3 @@
-# Proyecto desplegado en Netlify
-
-https://samu3le-restaurant-test.netlify.app/
-
 ## Entorno de desarrollo
 
 Ubuntu 20.04.03
