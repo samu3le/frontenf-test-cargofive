@@ -20,7 +20,7 @@ Node v16.13.1
 ## Comandos para ejecutar el contenedor:
 
     sudo docker-compose build --no-cache
-    sudo docker-compose up -d --build samu3le_restaurant_frontend
+    sudo docker-compose up -d --build samu3le_frontend_cargofive
 
 ## Para ver las imagenes creadas:
 
@@ -28,7 +28,7 @@ Node v16.13.1
 
 ## Para ver los logs de la aplicación:
 
-    sudo docker-compose logs -t -f samu3le_restaurant_frontend
+    sudo docker-compose logs -t -f samu3le_frontend_cargofive
 
 ## Nota:
 
