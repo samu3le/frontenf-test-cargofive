@@ -12,20 +12,21 @@ export default () => {
     listData: computed(() => store.getters[`${module}/listData`]),
     getList: () => store.dispatch(`${module}/getList`),
 
-    listParams: computed(() => store.getters[`${module}/listParams`]),
-    setParams: (e) => store.dispatch(`${module}/setParams`, e),
+    getListByCategory: (e) => store.dispatch(`${module}/getListByCategory`, e),
 
-    createFetchingData: computed(() => store.getters[`${module}/createFetchingData`],),
-    createErrors: computed(() => store.getters[`${module}/createErrors`]),
-    create: (e) => store.dispatch(`${module}/create`, e),
+    getListByAuthor: (e) => store.dispatch(`${module}/getListByAuthor`, e),
 
-    updateFetchingData: computed(() => store.getters[`${module}/updateFetchingData`],),
-    updateErrors: computed(() => store.getters[`${module}/updateErrors`]),
-    update: (e) => store.dispatch(`${module}/update`, e),
+    scrappArticles: () => store.dispatch(`${module}/scrappArticles`),
+    listScrappArticle: computed(() => store.getters[`${module}/listScrappArticle`],),
 
-    findOne: (e) => store.dispatch(`${module}/find`, e),
-    setStateChange: (e) => store.dispatch(`${module}/state_change`, e),
+    categoriesFetchingData: computed(() => store.getters[`${module}/categoriesFetchingData`],),
+    listCategoriesErrors: computed(() => store.getters[`${module}/listCategoriesErrors`]),
+    listCategoriesData: computed(() => store.getters[`${module}/listCategoriesData`]),
+    getCategories: () => store.dispatch(`${module}/getCategories`),
 
-    setFetchingData: (e) => store.dispatch(`${module}/setFetchingData`, e),
+    authorsFetchingData: computed(() => store.getters[`${module}/authorsFetchingData`],),
+    listAuthorsErrors: computed(() => store.getters[`${module}/listAuthorsErrors`]),
+    listAuthorsData: computed(() => store.getters[`${module}/listAuthorsData`]),
+    getAuthors: () => store.dispatch(`${module}/getAuthors`),
   };
 };

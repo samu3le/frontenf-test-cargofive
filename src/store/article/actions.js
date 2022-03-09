@@ -27,110 +27,91 @@ export default {
                 return Promise.reject(err);
             });
     },
-    create({ commit }, {
-        name,
-        email,
-        password,
-        passwordConfirmation,
-    }) {
-        commit(types.CREATE_FETCH_REQUEST);
+    scrappArticles({ state, commit }) {
+        commit(types.SCRAPP_FETCH_REQUEST);
 
         return endpoint
-            .post({
-                url: `${types.route}/create`,
-                params: {
-                    name,
-                    email,
-                    password,
-                    passwordConfirmation,
-                },
+            .get({
+                url: `scrapper`,
             })
             .then(({ data }) => {
-                commit(types.CREATE_FETCH_SUCCESS, data);
+                commit(types.SCRAPP_FETCH_SUCCESS, data);
                 return data;
             })
             .catch((err) => {
                 console.log("err", err);
-                commit(types.CREATE_FETCH_FAILURE, { err: err.errors });
+                commit(types.SCRAPP_FETCH_FAILURE, { err: err.errors });
                 return Promise.reject(err);
             });
     },
-    state_change({ commit }, { id, active }) {
-        console.log(active, 'is_active Update');
-        commit(types.STATE_CHANGE_FETCH_REQUEST);
+    getCategories({ state, commit }) {
+        commit(types.CATEGORIES_FETCH_REQUEST);
+
         return endpoint
-            .post({
-                url: `${types.route}/update`,
-                params: {
-                    id,
-                    is_active: active,
-                },
+            .get({
+                url: `categories`,
             })
             .then(({ data }) => {
-                commit(types.STATE_CHANGE_FETCH_SUCCESS, data);
+                commit(types.CATEGORIES_FETCH_SUCCESS, data);
                 return data;
             })
             .catch((err) => {
-                commit(types.STATE_CHANGE_FETCH_FAILURE, { err: err.errors });
+                console.log("err", err);
+                commit(types.CATEGORIES_FETCH_FAILURE, { err: err.errors });
                 return Promise.reject(err);
             });
     },
-    setData({ commit }, {
-        created_at,
-        created_by,
-        deleted_at,
-        id,
-        image,
-        is_active,
-        key,
-        name,
-        stock,
-        updated_at,
-    }) {
-        commit(types.SET_DATA, {
-            created_at,
-            created_by,
-            deleted_at,
-            id,
-            image,
-            is_active,
-            key,
-            name,
-            stock,
-            updated_at,
-        });
+    getAuthors({ state, commit }) {
+        commit(types.AUTHORS_FETCH_REQUEST);
+
+        return endpoint
+            .get({
+                url: `${types.route}/authors`,
+            })
+            .then(({ data }) => {
+                commit(types.AUTHORS_FETCH_SUCCESS, data);
+                return data;
+            })
+            .catch((err) => {
+                console.log("err", err);
+                commit(types.AUTHORS_FETCH_FAILURE, { err: err.errors });
+                return Promise.reject(err);
+            });
     },
-    update({ commit }, {
-        id,
-        name,
-        password,
-        passwordConfirmation }) {
-        try {
-            commit(types.UPDATE_FETCH_REQUEST);
+    getListByCategory({ state, commit }, { name }) {
+        commit(types.LIST_FETCH_REQUEST);
 
-            return endpoint
-                .post({
-                    url: `${types.route}/update`,
-                    params: {
-                        id: id,
-                        name,
-                        password,
-                        passwordConfirmation,
-                        is_active: true,
-                    },
-                })
-                .then(({ data }) => {
-                    commit(types.UPDATE_FETCH_SUCCESS, data);
-                    return data;
-                })
-                .catch((err) => {
-                    console.log("err", err);
-                    commit(types.UPDATE_FETCH_FAILURE, { err: err.errors });
-                    return Promise.reject(err);
-                });
-        } catch (error) {
-            console.error(error, 'action Update');
-        }
+        return endpoint
+            .get({
+                url: `categories/articles`,
+                params: { name },
+            })
+            .then(({ data }) => {
+                commit(types.LIST_FETCH_SUCCESS, data);
+                return data;
+            })
+            .catch((err) => {
+                console.log("err", err);
+                commit(types.LIST_FETCH_FAILURE, { err: err.errors });
+                return Promise.reject(err);
+            });
+    },
+    getListByAuthor({ state, commit }, { author }) {
+        commit(types.LIST_FETCH_REQUEST);
 
+        return endpoint
+            .get({
+                url: `${types.route}/by_author`,
+                params: { author },
+            })
+            .then(({ data }) => {
+                commit(types.LIST_FETCH_SUCCESS, data);
+                return data;
+            })
+            .catch((err) => {
+                console.log("err", err);
+                commit(types.LIST_FETCH_FAILURE, { err: err.errors });
+                return Promise.reject(err);
+            });
     },
 };

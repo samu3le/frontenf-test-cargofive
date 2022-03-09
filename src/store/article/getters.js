@@ -35,4 +35,28 @@ export default {
   updateErrors(state) {
     return state.update.message;
   },
+
+  listScrappArticle(state) {
+    return state.scrapp.fetchingData;
+  },
+
+  categoriesFetchingData(state) {
+    return state.categories.fetchingData;
+  },
+  listCategoriesErrors(state) {
+    return state.categories.errors;
+  },
+  listCategoriesData(state) {
+    return state.categories.data;
+  },
+
+  authorsFetchingData(state) {
+    return state.authors.fetchingData;
+  },
+  listAuthorsErrors(state) {
+    return state.authors.errors;
+  },
+  listAuthorsData(state) {
+    return state.authors.data;
+  },
 };

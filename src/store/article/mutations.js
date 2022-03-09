@@ -21,45 +21,46 @@ export default {
         state.list.errors = errors
     },
 
-    [types.CREATE_FETCH_REQUEST](state) {
-        state.create.fetchingData = true
-        state.create.errors = null
+    [types.SCRAPP_FETCH_REQUEST](state) {
+        state.scrapp.fetchingData = true
+        state.scrapp.errors = null
     },
-    [types.CREATE_FETCH_SUCCESS](state, { data }) {
-        state.create.fetchingData = false
-        state.create.errors = null
-        state.create.data = data
+    [types.SCRAPP_FETCH_SUCCESS](state, { data }) {
+        state.scrapp.fetchingData = false
+        state.scrapp.errors = null
+        state.scrapp.data = data
     },
-    [types.CREATE_FETCH_FAILURE](state, { errors }) {
-        state.create.fetchingData = false
-        state.create.errors = errors
-    },
-
-    [types.STATE_CHANGE_FETCH_REQUEST](state) {
-        state.create.fetchingData = true
-        state.create.errors = null
-    },
-    [types.STATE_CHANGE_FETCH_SUCCESS](state, { data }) {
-        state.create.fetchingData = false
-        state.create.errors = null
-        state.create.data = data
-    },
-    [types.STATE_CHANGE_FETCH_FAILURE](state, { errors }) {
-        state.create.fetchingData = false
-        state.create.errors = errors
+    [types.SCRAPP_FETCH_FAILURE](state, { errors }) {
+        state.scrapp.fetchingData = false
+        state.scrapp.errors = errors
     },
 
-    [types.UPDATE_FETCH_REQUEST](state) {
-        state.update.fetchingData = true
-        state.update.errors = null
+    [types.CATEGORIES_FETCH_REQUEST](state) {
+        state.categories.fetchingData = true
+        state.categories.errors = null
     },
-    [types.UPDATE_FETCH_SUCCESS](state, { data }) {
-        state.update.fetchingData = false
-        state.update.errors = null
-        state.update.data = data
+    [types.CATEGORIES_FETCH_SUCCESS](state, { categories }) {
+        state.categories.fetchingData = false
+        state.categories.errors = null
+        state.categories.data = categories
     },
-    [types.UPDATE_FETCH_FAILURE](state, { errors }) {
-        state.update.fetchingData = false
-        state.update.errors = errors
+    [types.CATEGORIES_FETCH_FAILURE](state, { errors }) {
+        state.categories.fetchingData = false
+        state.categories.errors = errors
     },
+
+    [types.AUTHORS_FETCH_REQUEST](state) {
+        state.authors.fetchingData = true
+        state.authors.errors = null
+    },
+    [types.AUTHORS_FETCH_SUCCESS](state, { authors }) {
+        state.authors.fetchingData = false
+        state.authors.errors = null
+        state.authors.data = authors
+    },
+    [types.AUTHORS_FETCH_FAILURE](state, { errors }) {
+        state.authors.fetchingData = false
+        state.authors.errors = errors
+    },
+
 }

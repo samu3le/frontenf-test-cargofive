@@ -6,20 +6,14 @@ export default {
     fetchingData: false,
     message: null,
     errors: {
-      // name : "name"
-      // key : " key"
-      // stock : "stock"
-      // image : "mage"
+
     },
   },
   update: {
     fetchingData: false,
     message: null,
     errors: {
-      // name : "name"
-      // key : " key"
-      // stock : "stock"
-      // image : "mage"
+
     },
   },
   list: {
@@ -34,17 +28,7 @@ export default {
       next_page: 1,
       prev_page: null,
       data: [
-        // Example
-        // {
-        //     id: 1,
-        //     name : "name"
-        //     key : " key"
-        //     stock : "stock"
-        //     image : "mage"
-        //     is_active: 'is_active',
-        //     created_at: 'created_at',
-        //     updated_at: 'updated_at',
-        // }
+
       ],
     },
     params: {
@@ -57,4 +41,35 @@ export default {
       filter_by: "",
     },
   },
+  scrapp: {
+    fetchingData: false,
+    errors: null,
+    data: {
+      // example response backend
+      data: [
+
+      ],
+    },
+  },
+  categories: {
+    fetchingData: false,
+    errors: null,
+    data: {
+
+      data: [
+
+      ],
+    },
+  },
+  authors: {
+    fetchingData: false,
+    errors: null,
+    data: {
+
+      data: [
+
+      ],
+    },
+  },
+
 };
