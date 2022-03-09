@@ -21,13 +21,13 @@ const routes = [
 
 if (menu_items.length > 0) {
     menu_items.forEach(({ isActive, path, name, props, component, requiresAuth }) => {
-        if(isActive) {
+        if (isActive) {
             routes.push({
                 path,
                 name,
                 props,
                 meta: {
-                    requiresAuth : requiresAuth || false,
+                    requiresAuth: requiresAuth || false,
                 },
                 component: () => import(/* webpackChunkName: "[request]" */ `@/views/${component}.vue`)
             })
@@ -43,17 +43,17 @@ const router = createRouter({
 router.beforeEach((to, from) => {
 
     const auth = store.getters['auth/auth'];
-    if(to.name === 'Login' && to.name === 'Login' && auth) {
+    if (to.name === 'Login' && to.name === 'Login' && auth) {
         router.push({ name: 'Home' });
     }
-    if(to.meta.requiresAuth) {
-        if(!auth) {
+    if (to.meta.requiresAuth) {
+        if (!auth) {
             router.push({
                 name: 'Home',
             })
         }
     }
-    
+
     return true
 })
 

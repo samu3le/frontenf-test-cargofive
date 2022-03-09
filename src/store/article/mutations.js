@@ -11,10 +11,10 @@ export default {
         state.list.fetchingData = true
         state.list.errors = null
     },
-    [types.LIST_FETCH_SUCCESS](state, { users }) {
+    [types.LIST_FETCH_SUCCESS](state, { articles }) {
         state.list.fetchingData = false
         state.list.errors = null
-        state.list.data = users.data
+        state.list.data = articles
     },
     [types.LIST_FETCH_FAILURE](state, { errors }) {
         state.list.fetchingData = false

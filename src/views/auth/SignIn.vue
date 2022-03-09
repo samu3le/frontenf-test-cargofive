@@ -111,8 +111,8 @@ export default {
     });
 
     let formValues = reactive({
-      email: "alejandroo@mail.com",
-      password: "a123456",
+      email: "samuelesponline@gmail.com",
+      password: "123456",
       remember_me: false,
     });
 

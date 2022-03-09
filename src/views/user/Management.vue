@@ -60,9 +60,14 @@
                       type: 'custom',
                     },
                     {
-                      label: 'Creado hace',
+                      label: 'Creado',
                       field: 'created_at',
                       type: 'date',
+                    },
+                    {
+                      label: 'Accion',
+                      field: 'Actions',
+                      type: 'custom',
                     },
                   ]"
                   :list="listData"
@@ -80,10 +85,35 @@
                           @click.stop.prevent="
                             state_change({
                               active: $event.target.checked,
-                              id: dataRow.id,
+                              id: dataRow?.id,
                             })
                           "
                         />
+                      </div>
+                    </div>
+                    <div v-else-if="dataField === 'Actions'">
+                      <div class="btn-group" role="group" aria-label="">
+                        <button
+                          v-on:click="modalEventUpdate(dataRow)"
+                          class="btn btn-outline-info"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-pencil-square"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                            />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                     <div v-else>
@@ -99,6 +129,7 @@
       </div>
     </div>
     <Create ref="modal_create" @finish_success="getList" />
+    <Update ref="modal_update" @finish_success="getList" />
   </div>
 </template>
 
@@ -108,6 +139,7 @@ import { ref, onBeforeMount } from "vue";
 import TableCustom from "@/components/Table.vue";
 import ButtonCustom from "@/components/Button.vue";
 import Create from "./Create.vue";
+import Update from './Update.vue';
 
 import useUser from "@/composables/useUser";
 import { useSwal } from "@/composables/useSwal";
@@ -118,6 +150,7 @@ export default {
     TableCustom,
     ButtonCustom,
     Create,
+    Update,
   },
   setup() {
     const Swal = useSwal();
@@ -133,11 +166,6 @@ export default {
     } = useUser();
 
     onBeforeMount(() => {
-      // setParams({
-      //   per_page: 10,
-      //   page: 1,
-      //   search: undefined,
-      // });
       getList();
     });
 
@@ -148,6 +176,11 @@ export default {
     const modal_create = ref(null);
     const modalEvent = () => {
       modal_create.value.open();
+    };
+
+    const modal_update = ref(null);
+    const modalEventUpdate = ({ id,name, email}) => {
+      modal_update.value.open({ id,name, email });
     };
 
     const state_change = ({ id, active }) => {
@@ -173,6 +206,8 @@ export default {
       getList,
       modalEvent,
       modal_create,
+      modalEventUpdate,
+      modal_update,
       state_change,
     };
   },

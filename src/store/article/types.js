@@ -1,4 +1,4 @@
-export const route = "users";
+export const route = "articles";
 
 export const LIST_SET_PARAMS = "LIST_SET_PARAMS";
 export const LIST_FETCH_REQUEST = "LIST_FETCH_REQUEST";

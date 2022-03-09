@@ -24,4 +24,12 @@ export default [
     isActive: true,
     requiresAuth: true,
   },
+  {
+    name: "article",
+    path: "/articles",
+    text: "Articles",
+    component: "article/Management",
+    isActive: true,
+    requiresAuth: true,
+  },
 ];

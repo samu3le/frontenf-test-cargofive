@@ -3,6 +3,7 @@ import { createStore, createLogger } from "vuex";
 import config from "./config";
 import auth from "./auth";
 import user from "./user";
+import article from "./article";
 
 import { debug } from "@/helpers/getVars.js";
 
@@ -13,5 +14,6 @@ export default createStore({
     config,
     auth,
     user,
+    article,
   },
 });

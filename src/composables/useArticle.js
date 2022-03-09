@@ -2,7 +2,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 export default () => {
-  const module = "user";
+  const module = "article";
 
   const store = useStore();
 

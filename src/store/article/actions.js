@@ -14,7 +14,7 @@ export default {
 
         return endpoint
             .get({
-                url: `${types.route}/get_all`,
+                url: `${types.route}/`,
                 params: state.list.params,
             })
             .then(({ data }) => {
